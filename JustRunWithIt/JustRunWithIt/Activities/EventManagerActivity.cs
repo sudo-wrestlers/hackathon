@@ -21,6 +21,7 @@ namespace JustRunWithIt
 			base.OnCreate (bundle);
 
 			// Create your application here
+			SetContentView(Resource.Layout.event_manager);
 		}
 	}
 }
