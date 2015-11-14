@@ -8,11 +8,11 @@ namespace JustRunWithIt
 
 	public class Event
 	{
-		public string Name { public get; private set;}
-		public Category EvtCategory { public get; private set; }
-		public Tuple<float, float> Location { public get; private set; }
-		public DateTime StartTime { public get; private set; }
-		public DateTime EndTime {public get; private set; }
+		public string Name { get; private set;}
+		public Category EvtCategory { get; private set; }
+		public Tuple<float, float> Location { get; private set; }
+		public DateTime StartTime { get; private set; }
+		public DateTime EndTime { get; private set; }
 
 		private int id;
 		private int hostid;
@@ -22,19 +22,22 @@ namespace JustRunWithIt
 		private DateTime startTime;
 		private DateTime endTime;
 
+		private Event() {}
 		public Event (string name, float longitude, float latitude, int hostid)
 		{
 			//TODO: Add to sql and retrieve sql identifier
 		
 			this.name = name;
-			this.location.Item1 = longitude;
-			this.location.Item2 = latitude;
+			this.location = new Tuple<float, float> (latitude, longitude);
 			this.hostid = hostid;
 		}
 
-		public getFromEventID (int eventid)
+		public static Event getFromEventID (int eventid)
 		{
 			//TODO: Hydrate model from database
+
+			return new Event();
+		}
 	}
 }
 

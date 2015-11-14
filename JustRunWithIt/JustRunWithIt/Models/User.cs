@@ -4,13 +4,15 @@ namespace JustRunWithIt
 {
 	public class User
 	{
-		public string Name { public get; private set; }
+		public string FirstName { get; private set; }
+		public string LastName { get; private set; }
 
 		private int id;
 		private string firstName;
 		private string lastName;
 		private string distance;
 
+		private User() {}
 		public User (string first, string last)
 		{
 			this.firstName = first;
@@ -18,7 +20,9 @@ namespace JustRunWithIt
 		}
 
 		public static User createFromID(int id){
-			// ToDo: Hook up to database and retrieve info
+			// TODO: Hook up to database and retrieve info
+
+			return new User();
 		}
 	}
 }
