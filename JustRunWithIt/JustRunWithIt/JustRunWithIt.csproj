@@ -56,6 +56,9 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="Activities\EventManagerActivity.cs" />
+    <Compile Include="Activities\EventCreatorActivity.cs" />
+    <Compile Include="Activities\EventViewerActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
