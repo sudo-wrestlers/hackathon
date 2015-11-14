@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 
 namespace JustRunWithIt
 {
@@ -10,7 +11,7 @@ namespace JustRunWithIt
 		private int id;
 		private string firstName;
 		private string lastName;
-		private string distance;
+		private float distance;
 
 		private User() {}
 		public User (string first, string last)
@@ -20,9 +21,12 @@ namespace JustRunWithIt
 		}
 
 		public static User createFromID(int id){
-			// TODO: Hook up to database and retrieve info
+			User user = new User ();
 
-			return new User();
+			SqlConnection db = new SqlConnection();
+
+
+			return user;
 		}
 	}
 }
