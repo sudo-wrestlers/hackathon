@@ -43,7 +43,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Services" />
     <Reference Include="Mono.Android" />
-    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -56,7 +55,15 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Activities\MainActivity.cs" />
+<<<<<<< HEAD
     <Compile Include="Models\Configuration.cs" />
+=======
+    <Compile Include="Activities\EventManagerActivity.cs" />
+    <Compile Include="Activities\EventEditFragment.cs" />
+    <Compile Include="Activities\EventViewFragment.cs" />
+    <Compile Include="Activities\EventManagerFragment.cs" />
+    <Compile Include="Activities\EventInfoFragment.cs" />
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -93,6 +100,10 @@
     <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\layout\event_manager.xml" />
+    <AndroidResource Include="Resources\layout\event_edit.xml" />
+    <AndroidResource Include="Resources\layout\event_info.xml" />
+    <AndroidResource Include="Resources\layout\event_view.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\style.css" />

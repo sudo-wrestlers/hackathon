@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Xml;
+using System.Data.SqlClient;
 
 namespace JustRunWithIt
 {
@@ -32,6 +33,19 @@ namespace JustRunWithIt
 			db.Username = databaseInfo.SelectSingleNode ("username").Value;
 			db.Password = databaseInfo.SelectSingleNode ("password").Value;
 			db.Database = databaseInfo.SelectSingleNode ("database_name").Value;
+
+			return db;
+		}
+
+		public static SqlConnection getConnection(){
+			DatabaseInfo config = Configuration.retrieveDatabaseInfo();
+
+			// Connect to DB
+			SqlConnection db = new SqlConnection ();
+			db.ConnectionString = "Data Source: " + config.Host + ";"
+			+ "Initial Catalog: " + config.Database + ";"
+			+ "User ID: " + config.Username + ";"
+			+ "Password: " + config.Password + ";";
 
 			return db;
 		}

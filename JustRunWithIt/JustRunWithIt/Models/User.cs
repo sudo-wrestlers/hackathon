@@ -7,8 +7,9 @@ namespace JustRunWithIt
 {
 	public class User
 	{
-		public string FirstName { get; private set; }
-		public string LastName { get; private set; }
+		public string FirstName { get{ return firstName; } private set{ } }
+		public string LastName { get{ return lastName; } private set{ } }
+		public string Distance { get{ return Distance; } private set{ } }
 
 		private int id;
 		private string firstName;
@@ -22,6 +23,37 @@ namespace JustRunWithIt
 			this.lastName = last;
 		}
 
+		public static User AddUser(int id, string first, string last)
+		{
+			// Create Model to return
+			User person = new User ();
+			person.firstName = first;
+			person.lastName = last;
+			person.distance = 0;
+			person.id = id;
+
+			// Add User to database
+			SqlConnection db = Configuration.getConnection();
+
+			SqlCommand query = new SqlCommand ();
+			query.CommandText = "INSERT INTO Users (UserID, first, last, distance) VALUES (@USERID, @FIRST, @LAST, @DISTANCE)";
+			query.Parameters.Add ("@USERID", SqlDbType.Int);
+			query.Parameters.Add ("@FIRST", SqlDbType.VarChar);
+			query.Parameters.Add ("@LAST", SqlDbType.VarChar);
+			query.Parameters.Add ("@DISTANCE", SqlDbType.Decimal);
+			query.Parameters ["@USERID"].Value = person.id;
+			query.Parameters ["@FIRST"].Value = person.firstName;
+			query.Parameters ["@LAST"].Value = person.lastName;
+			query.Parameters ["@DISTANCE"].Value = person.distance;
+
+			try{
+				query.ExecuteNonQuery();
+			} catch (Exception err){
+				Console.WriteLine (err.Message);
+			}
+			return person;
+		}
+
 		/**
 		 * Retrieve a hydrated User object from the database. Receive an empty model
 		 * on failure
@@ -33,11 +65,7 @@ namespace JustRunWithIt
 			DatabaseInfo config = Configuration.retrieveDatabaseInfo();
 
 			// Connect to DB
-			SqlConnection db = new SqlConnection();
-			db.ConnectionString = "Data Source: " + config.Host + ";"
-								+ "Initial Catalog: " + config.Database + ";"
-								+ "User ID: " + config.Username + ";"
-								+ "Password: " + config.Password + ";";
+			SqlConnection db = Configuration.getConnection();
 
 			// Execute command to retrieve data
 			SqlCommand query = new SqlCommand ();
