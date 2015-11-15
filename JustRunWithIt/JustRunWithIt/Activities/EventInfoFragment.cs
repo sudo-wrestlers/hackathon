@@ -16,11 +16,34 @@ namespace JustRunWithIt
 {
 	public class EventInfoFragment : Fragment
 	{
+		private User _user;
+		private Event _event;
+
 		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
 
 			// Create your fragment here
+
+			// get userid some-how here!
+			int userid = 0; // do real stuff with intents here
+			this._user = User.createFromID(userid);
+
+			int eventid = 0; // do real stuff with intents here
+			this._event = Event.getFromEventID(eventid);
+
+			// if (user == creator)
+			if (this._user.ID == this._event.HostID) {
+			//  button = "Cancel Event"
+
+			// else if (user == signed-up)
+			} else if (this._event.Attendees.Contains(this._user.ID)) {
+			//  button = "Leave Event"
+
+			// else 
+			} else {
+			//  button = "Join Event"
+			}
 		}
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -33,8 +56,39 @@ namespace JustRunWithIt
 
 		[Java.Interop.Export("joinEventClickHandler")]
 		public void joinEventClickHandler(View v) {
-			// Send join to database
-			// update button to have the user leave/cancel event
+			bool joined = false;
+			// if (user == creator)
+			if (this._user.ID == this._event.HostID) {
+				//	cancel event
+				this._event.RemoveEvent();
+				// redirect to view manager fragment
+				FragmentTransaction ft = this.FragmentManager.BeginTransaction ();
+				EventManagerFragment emf = new EventManagerFragment ();
+
+				ft.Replace (Resource.Id.frameLayout1, emf);
+
+				ft.Commit ();
+
+				return;
+			} 
+			// else if (user == signed-up)
+			else if (this._event.Attendees.Contains (this._user.ID)) {
+				// leave event
+				this._event.RemoveAttendee(this._user.ID);
+			} 
+			// else 
+			else {
+				// join event
+				this._event.AddAttendee(this._user.ID);
+				joined = true;
+			}
+
+			// Update Button text
+			if (joined) {
+				v.FindViewById<Button> (Resource.Id.button1).Text = "Leave Event";
+			} else {
+				v.FindViewById<Button> (Resource.Id.button1).Text = "Join Event";
+			}
 		}
 	}
 }
