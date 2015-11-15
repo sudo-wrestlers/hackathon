@@ -21,13 +21,29 @@ namespace JustRunWithIt
 		{
 			base.OnCreate (savedInstanceState);
 
+			Spinner spinner =  F<Spinner> (Resource.Id.spinner1);
+
+			spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs> (spinner_ItemSelected);
+			var adapter = ArrayAdapter.CreateFromResource (
+				this, Resource.Array.categories_array, Android.Resource.Layout.SimpleSpinnerItem);
+
+			adapter.SetDropDownViewResource (Android.Resource.Layout.SimpleSpinnerDropDownItem);
+			spinner.Adapter = adapter;
 			// Create your fragment here
 		}
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
-			// Use this to return your custom view for this Fragment
-			// return inflater.Inflate(Resource.Layout.YourFragment, container, false);
+			View verticalLinearLayout = inflater.Inflate(Resource.Layout.mylistrow,  null);
+			View horizontalLInearLaoyout = verticalLinearLayout.FindViewById(Resource.Id.questionRow);
+			Spinner spinner = (Spinner) horizontalLInearLaoyout.FindViewById(Resource.Id.spinner1);
+
+			var adapter = ArrayAdapter.CreateFromResource (
+				this, Resource.Array.categories_array, Android.Resource.Layout.SimpleSpinnerItem);
+
+			adapter.SetDropDownViewResource (Android.Resource.Layout.SimpleSpinnerDropDownItem);
+			spinner.Adapter = adapter;
+			
 
 			return base.OnCreateView (inflater, container, savedInstanceState);
 		}

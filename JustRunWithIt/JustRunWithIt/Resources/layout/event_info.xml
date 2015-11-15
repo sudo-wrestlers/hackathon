@@ -4,39 +4,65 @@
     p1:layout_width="match_parent"
     p1:layout_height="match_parent"
     p1:id="@+id/linearLayout1">
+    <Space
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/space1"
+        p1:minWidth="0dp"
+        p1:minHeight=" 50dp" />
     <TextView
         p1:text="Event Title"
         p1:textAppearance="?android:attr/textAppearanceLarge"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/textView1" />
+        p1:id="@+id/textView1"
+        p1:paddingLeft="10dp" />
     <TextView
         p1:textAppearance="?android:attr/textAppearanceLarge"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/textView2" />
+        p1:id="@+id/textView2"
+        p1:layout_marginBottom="10dp"
+        p1:layout_marginLeft="10dp"
+        p1:layout_marginRight="10dp" />
     <TextView
         p1:text="Description"
         p1:textAppearance="?android:attr/textAppearanceLarge"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/textView3" />
+        p1:id="@+id/textView3"
+        p1:paddingLeft="10dp" />
     <TextView
         p1:textAppearance="?android:attr/textAppearanceLarge"
         p1:layout_width="match_parent"
-        p1:layout_height="168.4dp"
-        p1:id="@+id/textView4" />
+        p1:layout_height="106.4dp"
+        p1:id="@+id/textView4"
+        p1:layout_marginLeft="10dp"
+        p1:layout_marginRight="10dp"
+        p1:layout_marginBottom="10dp" />
     <TextView
         p1:text="Category"
         p1:textAppearance="?android:attr/textAppearanceLarge"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/textView5" />
+        p1:id="@+id/textView5"
+        p1:paddingLeft="10dp" />
     <TextView
         p1:textAppearance="?android:attr/textAppearanceLarge"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/textView6" />
+        p1:id="@+id/textView6"
+        p1:layout_marginBottom="10dp"
+        p1:layout_marginRight="10dp"
+        p1:layout_marginLeft="10dp"
+        p1:minWidth="0dp"
+        p1:minHeight=" 35dp" />
+    <Space
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/space2"
+        p1:minWidth="0dp"
+        p1:minHeight=" 190dp" />
     <Button
         p1:text="Sign-Up"
         p1:layout_width="match_parent"
