@@ -54,8 +54,9 @@ namespace JustRunWithIt
 
 			// Set up command
 			SqlCommand query = new SqlCommand();
-			query.CommandText = "INSERT INTO Events (EventName, EventDescription, PublicEvent, EventStartTime, EventEndTime, HostID, HostType, EventType, Longitude, Latitude)"
-							  + "VALUES (@NAME, @DESCRIPT, @PUBLICITY, @START, @END, @HOSTID, @HOSTTYPE, @EVENTTYPE, @LONGIT, @LATIT)";
+			query.CommandText = "INSERT INTO Events (EventName, EventDescription, PublicEvent, EventStartTime, EventEndTime, HostID, HostType, EventType, Longitude, Latitude)" +
+				"VALUES (@NAME, @DESCRIPT, @PUBLICITY, @START, @END, @HOSTID, @HOSTTYPE, @EVENTTYPE, @LONGIT, @LATIT);" +
+				"SELECT last_insert_id();";
 			query.Parameters.Add ("@NAME", SqlDbType.VarChar);
 			query.Parameters.Add ("@DESCRIPT", SqlDbType.VarChar);
 			query.Parameters.Add ("@PUBLICITY", SqlDbType.Bit);
@@ -80,17 +81,53 @@ namespace JustRunWithIt
 			bool isSuccessful = true;
 			try{
 				db.Open();
-				query.ExecuteNonQuery();
+
+				// Retrieves the ID in one go
+				this.id = Convert.ToInt32(query.ExecuteScalar());
 			} catch (Exception err) {
+				isSuccessful = false;
 				Console.WriteLine (err.Message);
 			}
-
 			return isSuccessful;
 		}
 
 		public bool SaveEvent(){
 			bool isSuccessful = true;
-
+			SqlCommand query = new SqlCommand();
+			query.CommandText = "UPDATE Events" +
+				"SET EventName = @NAME," +
+				"SET EventDescription = @DESCRIPT," +
+				"SET PublicEvent = @PUBLICITY," +
+				"SET EventStartTime = @START," +
+				"SET EventEndTime = @END," +
+				"SET HostID = @HOSTID," +
+				"SET HostType = @HOSTTYPE," +
+				"SET EventType = @EVENTTYPE," +
+				"SET Longitude = @LONGIT," +
+				"SET Latitude = @LATIT" +
+				"WHERE EventID = @EVENTID";
+			query.Parameters.Add ("@EVENTID", SqlDbType.Int);
+			query.Parameters.Add ("@NAME", SqlDbType.VarChar);
+			query.Parameters.Add ("@DESCRIPT", SqlDbType.VarChar);
+			query.Parameters.Add ("@PUBLICITY", SqlDbType.Bit);
+			query.Parameters.Add ("@START", SqlDbType.DateTime);
+			query.Parameters.Add ("@END", SqlDbType.DateTime);
+			query.Parameters.Add ("@HOSTID", SqlDbType.Int);
+			query.Parameters.Add ("@HOSTTYPE", SqlDbType.VarChar);
+			query.Parameters.Add ("@EVENTTYPE", SqlDbType.Int);
+			query.Parameters.Add ("@LONGIT", SqlDbType.Decimal);
+			query.Parameters.Add ("@LATIT", SqlDbType.Decimal);
+			query.Parameters ["@EVENTID"].Value = this.id;
+			query.Parameters ["@NAME"].Value = this.name;
+			query.Parameters ["@DESCRIPT"].Value = this.description;
+			query.Parameters ["@PUBLICITY"].Value = this.isPublic;
+			query.Parameters ["@START"].Value = this.StartTime.ToString (CultureInfo.InvariantCulture.DateTimeFormat);
+			query.Parameters ["@END"].Value = this.EndTime.ToString (CultureInfo.InvariantCulture.DateTimeFormat);
+			query.Parameters ["@HOSTID"].Value = this.hostid;
+			query.Parameters ["@HOSTTYPE"].Value = this.hosttype;
+			query.Parameters ["@EVENTTYPE"].Value = (int)this.EvtCategory;
+			query.Parameters ["@LONGIT"].Value = this.Location.Item1;
+			query.Parameters ["@LATIT"].Value = this.Location.Item2;
 			return isSuccessful;
 		}
 			

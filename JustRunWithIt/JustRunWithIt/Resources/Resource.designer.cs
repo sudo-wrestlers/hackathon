@@ -125,14 +125,10 @@ namespace JustRunWithIt
 			public const int event_manager = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-<<<<<<< HEAD
 			public const int event_view = 2130903043;
 			
 			// aapt resource value: 0x7f030004
 			public const int Main = 2130903044;
-=======
-			public const int Main = 2130903043;
->>>>>>> origin/master
 			
 			static Layout()
 			{
