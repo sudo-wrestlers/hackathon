@@ -31,6 +31,20 @@ namespace JustRunWithIt
 			return base.OnCreateView (inflater, container, savedInstanceState);
 		}
 
+		[Java.Interop.Export("createCreateEventClickHandler")]
+		public void createCreateEventClickHandler(View v) {
+			// Create New Event
+			// 	send to database
+
+			// Send user to EventInfoFragment for new event
+			//  preserve event id
+			FragmentTransaction ft = this.FragmentManager.BeginTransaction ();
+			EventInfoFragment eif = new EventInfoFragment ();
+
+			ft.Replace (Resource.Id.frameLayout1, eif);
+
+			ft.Commit ();
+		}
 
 	}
 }

@@ -30,6 +30,12 @@ namespace JustRunWithIt
 
 			return base.OnCreateView (inflater, container, savedInstanceState);
 		}
+
+		[Java.Interop.Export("joinEventClickHandler")]
+		public void createCreateEventClickHandler(View v) {
+			// Send join to database
+			// update button to have the user leave/cancel event
+		}
 	}
 }
 

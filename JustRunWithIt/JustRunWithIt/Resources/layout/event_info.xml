@@ -41,5 +41,6 @@
         p1:text="Sign-Up"
         p1:layout_width="match_parent"
         p1:layout_height="wrap_content"
-        p1:id="@+id/button1" />
+        p1:id="@+id/button1"
+        p1:onClick="joinEventClickHandler" />
 </LinearLayout>
