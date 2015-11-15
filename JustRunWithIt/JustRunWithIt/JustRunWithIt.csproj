@@ -65,7 +65,6 @@
     <Compile Include="Activities\EventEditFragment.cs" />
     <Compile Include="Activities\EventInfoFragment.cs" />
     <Compile Include="Activities\EventMainActivity.cs" />
-    <Compile Include="Activities\EventManagerFragment.cs" />
     <Compile Include="EmptyClass.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
     <Compile Include="Activities\DashActivity.cs" />

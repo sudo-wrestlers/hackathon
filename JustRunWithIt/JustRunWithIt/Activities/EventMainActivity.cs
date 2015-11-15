@@ -24,9 +24,9 @@ namespace JustRunWithIt
 
 			// Default to EventManagerFragment
 			FragmentTransaction ft = this.FragmentManager.BeginTransaction ();
-			EventManagerFragment emf = new EventManagerFragment ();
+			// EventManagerFragment emf = new EventManagerFragment ();
 
-			ft.Add (Resource.Id.frameLayout1, emf);
+			// ft.Add (Resource.Id.frameLayout1, emf);
 
 			ft.Commit ();
 

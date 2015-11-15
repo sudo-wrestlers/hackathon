@@ -25,7 +25,7 @@ namespace JustRunWithIt
 
 			// Create your fragment here
 			string lp = string.Empty;
-			_lm = (LocationManager) GetSystemService(LocationManager);
+			_lm = (LocationManager) GetSystemService(LocationService);
 			Criteria cr = new Criteria { Accuracy = Accuracy.Fine };
 			IList<string> alp = _lm.GetProviders (cr, true);
 
