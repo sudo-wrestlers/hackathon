@@ -36,7 +36,6 @@ namespace JustRunWithIt
 			if (this._user.ID == this._event.HostID) {
 			//  button = "Cancel Event"
 
-
 			// else if (user == signed-up)
 			} else if (this._event.Attendees.Contains(this._user.ID)) {
 			//  button = "Leave Event"
