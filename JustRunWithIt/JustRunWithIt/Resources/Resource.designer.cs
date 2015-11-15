@@ -1710,6 +1710,7 @@ namespace JustRunWithIt
 			// aapt resource value: 0x7f010095
 			public const int borderlessButtonStyle = 2130772117;
 			
+<<<<<<< HEAD
 			// aapt resource value: 0x7f010092
 			public const int buttonBarButtonStyle = 2130772114;
 			
@@ -1721,6 +1722,10 @@ namespace JustRunWithIt
 			
 			// aapt resource value: 0x7f0100c0
 			public const int buttonBarNeutralButtonStyle = 2130772160;
+=======
+			// aapt resource value: 0x7f040000
+			public const int app_name = 2130968576;
+>>>>>>> parent of bf16caf... Fixed Build Error
 			
 			// aapt resource value: 0x7f0100be
 			public const int buttonBarPositiveButtonStyle = 2130772158;
