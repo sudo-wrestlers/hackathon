@@ -17,6 +17,8 @@ namespace JustRunWithIt
 	public class EventMainActivity : Activity
 	{
 		public User user;
+		private int userid;
+		private int eventid;
 
 		protected override void OnCreate (Bundle bundle)
 		{
