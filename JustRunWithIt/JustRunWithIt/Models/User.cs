@@ -7,9 +7,11 @@ namespace JustRunWithIt
 {
 	public class User
 	{
+		public int ID { get { return id; } private set { } }
 		public string FirstName { get{ return firstName; } private set{ } }
 		public string LastName { get{ return lastName; } private set{ } }
 		public string Distance { get{ return Distance; } private set{ } }
+
 
 		private int id;
 		private string firstName;

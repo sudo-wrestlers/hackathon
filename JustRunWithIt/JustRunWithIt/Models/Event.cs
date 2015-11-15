@@ -12,7 +12,6 @@ namespace JustRunWithIt
 	public class Event
 	{
 		public string Name { get { return name; } private set { }}
-		public string Description { get { return description; }private set { } }
 		public string HostID { get { return HostID; } private set { } }
 		public List<int> Attendees { get { return attendees; } private set { } }
 		public string HostType;
@@ -21,6 +20,7 @@ namespace JustRunWithIt
 		public DateTime StartTime;
 		public DateTime EndTime;
 		public bool isPublic;
+		public List<int> Attendees { get { return attendees; } private set { } } 
 
 		private int id;
 		private int hostid;
@@ -39,6 +39,7 @@ namespace JustRunWithIt
 			Location = new Tuple<float, float> (0,0);
 			StartTime = new DateTime ();
 			EndTime = new DateTime ();
+			attendees = new List<int> ();
 		}
 
 		/**
@@ -300,25 +301,37 @@ namespace JustRunWithIt
 			bool isSuccess = true;
 
 			// Connection
-			SqlConnection db = Configuration.getConnection();
+			SqlConnection db = Configuration.getConnection ();
 
 			SqlCommand query = new SqlCommand ();
 			query.CommandText = "INSERT Events_Users(EventID, UserID)" +
-								"VALUES (@EVENTID, @USERID);";
+			"VALUES (@EVENTID, @USERID);";
 			query.Parameters.Add ("@EVENTID", SqlDbType.Int);
 			query.Parameters.Add ("@USERID", SqlDbType.Int);
-			query.Parameters["@EVENTID"].Value = this.id;
+			query.Parameters ["@EVENTID"].Value = this.id;
 			query.Parameters ["@USERID"].Value = id;
 			try {
-				db.Open();
+				db.Open ();
 
-				query.ExecuteNonQuery();
+				query.ExecuteNonQuery ();
 			} catch (Exception err) {
 				isSuccess = false;
 				Console.WriteLine (err);
 			}
 
 			return isSuccess;
+		}
+
+		public void AddAttendee(int attendeeid) {
+			if (!this.attendees.Contains (attendeeid)) {
+				this.attendees.Add (attendeeid);
+			}
+		}
+
+		public void RemoveAttendee(int attendeeid) {
+			if (this.attendees.Contains (attendeeid)) {
+				this.attendees.Remove (attendeeid);
+			}
 		}
 	}
 }

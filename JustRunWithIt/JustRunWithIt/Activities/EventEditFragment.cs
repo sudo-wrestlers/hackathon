@@ -36,6 +36,7 @@ namespace JustRunWithIt
 			// Create New Event
 			// 	send to database
 
+
 			// Send user to EventInfoFragment for new event
 			//  preserve event id
 			FragmentTransaction ft = this.FragmentManager.BeginTransaction ();
