@@ -37,18 +37,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\JustRunWithIt\JustRunWithIt.csproj">
       <Project>{D9C961D9-4502-456A-84FF-B73153E20877}</Project>
       <Name>JustRunWithIt</Name>
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Tests.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>
