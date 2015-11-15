@@ -44,6 +44,8 @@ namespace JustRunWithIt
 			} else {
 			//  button = "Join Event"
 			}
+
+			// display event information
 		}
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
