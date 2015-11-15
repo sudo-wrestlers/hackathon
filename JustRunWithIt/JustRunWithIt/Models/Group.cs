@@ -40,10 +40,10 @@ namespace JustRunWithIt
 
 			try{
 				db.Open();
-				SqlDataReader data = query.ExecuteReader;
-				this.name = data.GetString(data.GetOrdinal("GroupName"));
-				this.description = data.GetString(data.GetOrdinal("GroupDescription"));
-				this.isPublic = data.GetBoolean(data.GetOrdinal("PublicGroup"));
+				SqlDataReader data = query.ExecuteReader();
+				group.name = data.GetString(data.GetOrdinal("GroupName"));
+				group.description = data.GetString(data.GetOrdinal("GroupDescription"));
+				group.isPublic = data.GetBoolean(data.GetOrdinal("PublicGroup"));
 			} catch (Exception err) {
 				Console.WriteLine (err.Message);
 			}
@@ -79,9 +79,6 @@ namespace JustRunWithIt
 
 			return group;
 		}
-
-
-
 
 
 	}

@@ -196,6 +196,56 @@ namespace JustRunWithIt
 
 			return new Event();
 		}
+
+		public static List<Event> GrabLocalEvents(float myLat, float myLong, float radius){
+			List<Event> events = new List<Event>();
+
+			// Convert degrees for lat & long
+			float degreesDeviance = radius * 1.0f/69; // HaHa 69
+
+			// Establish Connection
+			SqlConnection db = Configuration.getConnection();
+
+			SqlCommand query = new SqlCommand ();
+			query.CommandText = "SELECT * " +
+								"FROM Events" +
+								"WHERE Longitude > @MINLONGIT" +
+								"AND Longitude < @MAXLONGIT" +
+								"AND Latitude > @MINLATIT" +
+								"AND Latitude < @MAXLATIT;";
+			query.Parameters.Add ("@MINLONGIT", SqlDbType.Decimal);
+			query.Parameters.Add ("@MAXLONGIT", SqlDbType.Decimal);
+			query.Parameters.Add ("@MINLATIT", SqlDbType.Decimal);
+			query.Parameters.Add ("@MAXLATIT", SqlDbType.Decimal);
+			query.Parameters ["@MINLONGIT"].Value = myLong - degreesDeviance;
+			query.Parameters ["@MAXLONGIT"].Value = myLong + degreesDeviance;
+			query.Parameters ["@MINLATIT"].Value = myLat - degreesDeviance;
+			query.Parameters ["@MAXLATIT"].Value = myLat + degreesDeviance;
+
+			try {
+				db.Open();
+				SqlDataReader data = query.ExecuteReader();
+
+				do {
+					Event model = new Event();
+
+					model.id = data.GetInt32(data.GetOrdinal("EventID"));
+					model.name = data.GetString(data.GetOrdinal("EventName"));
+					model.description = data.GetString(data.GetOrdinal("EventDescription"));
+					model.hostid = data.GetInt32(data.GetOrdinal("HostID"));
+					model.EvtCategory = (Category)data.GetInt32(data.GetOrdinal("EventType"));
+					model.Location = new Tuple<float, float>(data.GetFloat(data.GetOrdinal("Latitude")), data.GetFloat(data.GetOrdinal("Longitude")));
+					model.StartTime = data.GetDateTime(data.GetOrdinal("EventStartTime"));
+					model.EndTime = data.GetDateTime(data.GetOrdinal("EventEndTime"));
+
+					events.Add(model);
+				} while (data.NextResult());
+			} catch (Exception err) {
+				Console.WriteLine (err.Message);
+			}
+
+			return events;
+		}
 	}
 }
 
