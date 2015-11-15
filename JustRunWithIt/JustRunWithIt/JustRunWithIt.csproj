@@ -59,6 +59,14 @@
     <Compile Include="Models\Group.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Models\Configuration.cs" />
+    <Compile Include="Activities\EventCreatorActivity.cs" />
+    <Compile Include="Activities\EventEditFragment.cs" />
+    <Compile Include="Activities\EventInfoFragment.cs" />
+    <Compile Include="Activities\EventMainActivity.cs" />
+    <Compile Include="Activities\EventManagerFragment.cs" />
+    <Compile Include="Activities\EventMgmt.cs" />
+    <Compile Include="Activities\EventViewerActivity.cs" />
+    <Compile Include="Activities\EventViewFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
