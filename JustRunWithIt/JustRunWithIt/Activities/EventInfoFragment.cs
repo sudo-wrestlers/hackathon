@@ -70,12 +70,7 @@ namespace JustRunWithIt
 				//	cancel event
 				this._event.RemoveEvent();
 				// redirect to view manager fragment
-				FragmentTransaction ft = this.FragmentManager.BeginTransaction ();
-				EventManagerFragment emf = new EventManagerFragment ();
-
-				ft.Replace (Resource.Id.frameLayout1, emf);
-
-				ft.Commit ();
+				this.Activity.SetContentView(Resource.Layout.Main);
 
 				return;
 			} 
