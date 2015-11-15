@@ -13,18 +13,20 @@ namespace JustRunWithIt
 	{
 		public string Name { get { return name; } private set { }}
 		public string Description { get { return description; }private set { } }
-		public string HostID { get { return HostID; } private set { } }
+		public int HostID { get { return hostid; } private set { } }
 		public string HostType;
 		public Category EvtCategory;
 		public Tuple<float, float> Location;
 		public DateTime StartTime;
 		public DateTime EndTime;
 		public bool isPublic;
+		public List<int> Attendees { get { return attendees; } private set { } } 
 
 		private int id;
 		private int hostid;
 		private string name;
 		private string description;
+		private List<int> attendees;
 
 		private Event() {
 			id = -1;
@@ -37,6 +39,7 @@ namespace JustRunWithIt
 			Location = new Tuple<float, float> (0,0);
 			StartTime = new DateTime ();
 			EndTime = new DateTime ();
+			attendees = new List<int> ();
 		}
 
 		/**
@@ -245,6 +248,18 @@ namespace JustRunWithIt
 			}
 
 			return events;
+		}
+
+		public void AddAttendee(int attendeeid) {
+			if (!this.attendees.Contains (attendeeid)) {
+				this.attendees.Add (attendeeid);
+			}
+		}
+
+		public void RemoveAttendee(int attendeeid) {
+			if (this.attendees.Contains (attendeeid)) {
+				this.attendees.Remove (attendeeid);
+			}
 		}
 	}
 }
