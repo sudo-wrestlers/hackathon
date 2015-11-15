@@ -35,17 +35,23 @@ namespace JustRunWithIt
 			// if (user == creator)
 			if (this._user.ID == this._event.HostID) {
 			//  button = "Cancel Event"
+				this.View.FindViewById<Button>(Resource.Id.button1).Text = "Cancel Event";
 
 			// else if (user == signed-up)
 			} else if (this._event.Attendees.Contains(this._user.ID)) {
 			//  button = "Leave Event"
+				this.View.FindViewById<Button>(Resource.Id.button1).Text = "Leave Event";
 
 			// else 
 			} else {
 			//  button = "Join Event"
+				this.View.FindViewById<Button>(Resource.Id.button1).Text = "Join Event";
 			}
 
 			// display event information
+			this.View.FindViewById<TextView>(Resource.Id.textView2).Text = this._event.Name;
+			this.View.FindViewById<TextView> (Resource.Id.textView4).Text = this._event.Description;
+			this.View.FindViewById<TextView> (Resource.Id.TextView6).Text = this._event.EvtCategory;
 		}
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
