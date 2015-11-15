@@ -220,6 +220,8 @@ namespace JustRunWithIt
 			query.Parameters.Add ("@MAXLONGIT", SqlDbType.Decimal);
 			query.Parameters.Add ("@MINLATIT", SqlDbType.Decimal);
 			query.Parameters.Add ("@MAXLATIT", SqlDbType.Decimal);
+			// query.Parameters.Add ("@CURDATE", SqlDbType.DateTime);
+			// query.Parameters.Add ("@CURDATE", SqlDbType.DateTime);
 			query.Parameters ["@MINLONGIT"].Value = myLong - degreesDeviance;
 			query.Parameters ["@MAXLONGIT"].Value = myLong + degreesDeviance;
 			query.Parameters ["@MINLATIT"].Value = myLat - degreesDeviance;

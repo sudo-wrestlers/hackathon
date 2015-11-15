@@ -80,7 +80,14 @@ namespace JustRunWithIt
 			return group;
 		}
 
+		/**
+		 * Add user to this event
+		 */
+		public bool AddUser(){
+			bool isSuccesful = true;
 
+			return isSuccesful;
+		}
 	}
 }
 
