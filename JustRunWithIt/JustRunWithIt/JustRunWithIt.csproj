@@ -47,7 +47,7 @@
     <Reference Include="Mono.Android.Export" />
     <Reference Include="Xamarin.Android.NUnitLite" />
     <Reference Include="Xamarin.Auth.Android">
-      <HintPath>..\packages\Xamarin.Auth.NoXamStore.1.0.0\lib\MonoAndroid\Xamarin.Auth.Android.dll</HintPath>
+      <HintPath>..\Components\xamarin.auth-1.2.3.1\lib\android\Xamarin.Auth.Android.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -78,10 +78,6 @@
     <None Include="Views\RazorView.cshtml">
       <Generator>RazorTemplatePreprocessor</Generator>
     </None>
-    <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
-    <None Include="Scripts\jquery-1.9.1.js" />
-    <None Include="Scripts\jquery-1.9.1.min.js" />
-    <None Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="packages.config" />
     <None Include="Content\bootstrap-theme.css" />
     <None Include="Content\bootstrap-theme.css.map" />
@@ -97,6 +93,10 @@
     <None Include="Scripts\bootstrap.js" />
     <None Include="Scripts\bootstrap.min.js" />
     <None Include="config.xml" />
+    <None Include="Scripts\jquery-2.1.4-vsdoc.js" />
+    <None Include="Scripts\jquery-2.1.4.js" />
+    <None Include="Scripts\jquery-2.1.4.min.js" />
+    <None Include="Scripts\jquery-2.1.4.min.map" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -120,5 +120,11 @@
   <Import Project="..\packages\xamstore-xamarin.auth.1.2.2\build\monoandroid\xamstore-xamarin.auth.props" Condition="Exists('..\packages\xamstore-xamarin.auth.1.2.2\build\monoandroid\xamstore-xamarin.auth.props')" />
   <ItemGroup>
     <Folder Include="Activities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="xamarin.auth">
+      <Version>1.2.3.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>

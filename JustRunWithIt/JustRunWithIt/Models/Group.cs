@@ -15,13 +15,11 @@ namespace JustRunWithIt
 		private int id;
 		private string name;
 		private string description;
-		private List<User> attendees;
 
 		private Group() {
 			name = "";
 			description = "";
 			isPublic = true;
-			attendees = new List<User>();
 			Tags = new List<String> ();
 		}
 
@@ -81,10 +79,12 @@ namespace JustRunWithIt
 		}
 
 		/**
-		 * Add user to this event
+		 * Add user to this group
 		 */
 		public bool AddUser(){
 			bool isSuccesful = true;
+
+
 
 			return isSuccesful;
 		}

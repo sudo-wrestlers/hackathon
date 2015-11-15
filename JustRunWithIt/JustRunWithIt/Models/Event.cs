@@ -12,15 +12,14 @@ namespace JustRunWithIt
 	public class Event
 	{
 		public string Name { get { return name; } private set { }}
-		public string Description { get { return description; }private set { } }
-		public int HostID { get { return hostid; } private set { } }
+		public int HostID { get { return HostID; } private set { } }
+		public List<int> Attendees { get { return attendees; } private set { } }
 		public string HostType;
 		public Category EvtCategory;
 		public Tuple<float, float> Location;
 		public DateTime StartTime;
 		public DateTime EndTime;
-		public bool isPublic;
-		public List<int> Attendees { get { return attendees; } private set { } } 
+		public bool isPublic; 
 
 		private int id;
 		private int hostid;
@@ -168,6 +167,15 @@ namespace JustRunWithIt
 				Console.WriteLine (err.Message);
 			}
 
+			// Remove List
+			query.CommandText = "DELETE Events_Users WHERE EventID = @EVENTID";
+			try{
+				query.ExecuteNonQuery();
+			} catch (Exception err) {
+				success = false;
+				Console.WriteLine (err.Message);
+			}
+
 			return success;
 		}
 
@@ -193,6 +201,24 @@ namespace JustRunWithIt
 				model.Location = new Tuple<float, float>(data.GetFloat(data.GetOrdinal("Latitude")), data.GetFloat(data.GetOrdinal("Longitude")));
 				model.StartTime = data.GetDateTime(data.GetOrdinal("EventStartTime"));
 				model.EndTime = data.GetDateTime(data.GetOrdinal("EventEndTime"));
+
+				// Retrieve Attendees List
+				query.CommandText = "SELECT UserID FROM Events_Users WHERE EventID = @EVENTID";
+				query.Parameters.Add ("@EVENTID", SqlDbType.Int);
+				query.Parameters ["@EVENTID"].Value = model.id;
+
+				try{
+					db.Open();
+
+					SqlDataReader eventList = query.ExecuteReader();
+
+					// Add id to list
+					do{
+						model.attendees.Add(eventList.GetInt32(eventList.GetOrdinal("UserID")));
+					} while (eventList.NextResult());
+				} catch (Exception attendErr) {
+					Console.WriteLine(attendErr.Message);
+				}
 			} catch (Exception err){
 				Console.WriteLine(err.Message);
 			}
@@ -243,25 +269,84 @@ namespace JustRunWithIt
 					model.StartTime = data.GetDateTime(data.GetOrdinal("EventStartTime"));
 					model.EndTime = data.GetDateTime(data.GetOrdinal("EventEndTime"));
 
+					// Retrieve Attendees List
+					query.CommandText = "SELECT UserID FROM Events_Users WHERE EventID = @EVENTID";
+					query.Parameters.Add ("@EVENTID", SqlDbType.Int);
+					query.Parameters ["@EVENTID"].Value = model.id;
+
+					try{
+						db.Open();
+
+						SqlDataReader eventList = query.ExecuteReader();
+
+						do{
+							model.attendees.Add(eventList.GetInt32(eventList.GetOrdinal("UserID")));
+							
+
+						} while (eventList.NextResult());
+					} catch (Exception attendErr) {
+						Console.WriteLine(attendErr.Message);
+					}
 					events.Add(model);
 				} while (data.NextResult());
-			} catch (Exception err) {
+			} catch (Exception err){
 				Console.WriteLine (err.Message);
 			}
 
 			return events;
 		}
 
-		public void AddAttendee(int attendeeid) {
-			if (!this.attendees.Contains (attendeeid)) {
-				this.attendees.Add (attendeeid);
+		public bool AddAttendee(int id){
+			bool isSuccess = true;
+
+			// Connection
+			SqlConnection db = Configuration.getConnection ();
+
+			SqlCommand query = new SqlCommand ();
+			query.CommandText = "INSERT Events_Users(EventID, UserID)" +
+			"VALUES (@EVENTID, @USERID);";
+			query.Parameters.Add ("@EVENTID", SqlDbType.Int);
+			query.Parameters.Add ("@USERID", SqlDbType.Int);
+			query.Parameters ["@EVENTID"].Value = this.id;
+			query.Parameters ["@USERID"].Value = id;
+			try {
+				db.Open ();
+
+				query.ExecuteNonQuery ();
+			} catch (Exception err) {
+				isSuccess = false;
+				Console.WriteLine (err.Message);
 			}
+
+			return isSuccess;
 		}
 
-		public void RemoveAttendee(int attendeeid) {
-			if (this.attendees.Contains (attendeeid)) {
-				this.attendees.Remove (attendeeid);
+		public bool RemoveAttendee(int id) {
+			if (!this.Attendees.Contains (id)) {
+				throw new Exception ("Group does not contain userid.");
 			}
+
+			bool isSuccess = true;
+
+			// Connection
+			SqlConnection db = Configuration.getConnection();
+			SqlCommand query = new SqlCommand ();
+			query.CommandText = "DELETE Events_Users WHERE EventID = @EVENTID AND UserID = @USERID";
+			query.Parameters.Add ("@EVENTID", SqlDbType.Int);
+			query.Parameters.Add ("@USERID", SqlDbType.Int);
+			query.Parameters ["@EVENTID"].Value = this.id;
+			query.Parameters ["@USERID"].Value = id;
+
+			try {
+				db.Open();
+
+				query.ExecuteNonQuery();
+			} catch (Exception err) {
+				isSuccess = false;
+				Console.WriteLine (err.Message);
+			}
+
+			return isSuccess;
 		}
 	}
 }
