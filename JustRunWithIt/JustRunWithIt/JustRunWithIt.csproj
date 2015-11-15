@@ -100,7 +100,6 @@
     <AndroidResource Include="Resources\layout\event_manager.xml" />
     <AndroidResource Include="Resources\layout\event_edit.xml" />
     <AndroidResource Include="Resources\layout\event_info.xml" />
-    <AndroidResource Include="Resources\layout\event_view.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\style.css" />
