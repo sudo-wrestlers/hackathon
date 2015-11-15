@@ -30,6 +30,8 @@ namespace JustRunWithIt
 
 			return base.OnCreateView (inflater, container, savedInstanceState);
 		}
+
+
 	}
 }
 

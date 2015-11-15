@@ -30,6 +30,17 @@ namespace JustRunWithIt
 
 			return base.OnCreateView (inflater, container, savedInstanceState);
 		}
+
+		[Java.Interop.Export("createEventClickHandler")]
+		public void createEventClickHandler(View v) {
+			// Replace with EventEditFragment
+			FragmentTransaction ft = this.FragmentManager.BeginTransaction ();
+			EventEditFragment eef = new EventEditFragment ();
+
+			ft.Replace (Resource.Id.linearLayout1, eef);
+
+			ft.Commit ();
+		}
 	}
 }
 
