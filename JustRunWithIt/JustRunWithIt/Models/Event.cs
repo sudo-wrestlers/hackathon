@@ -27,13 +27,27 @@ namespace JustRunWithIt
 		private string name;
 		private string description;
 		private List<int> attendees;
+		private Event() {
+			id = -1;
+			hostid = -1;
+			HostType = "";
+			name = "";
+			description = "";
+			isPublic = true;
+			EvtCategory = Category.NULL;
+			Location = new Tuple<float, float> (0,0);
+			StartTime = new DateTime ();
+			EndTime = new DateTime ();
+			attendees = new List<int> ();
+		}
+
 
 		public Event(string name, string description) {
 			id = -1;
 			hostid = -1;
 			HostType = "";
-			name = name;
-			description = "";
+			this.name = name;
+			this.description = description;
 			isPublic = true;
 			EvtCategory = Category.NULL;
 			Location = new Tuple<float, float> (0,0);
