@@ -19,8 +19,7 @@ namespace JustRunWithIt
 		public Tuple<float, float> Location;
 		public DateTime StartTime;
 		public DateTime EndTime;
-		public bool isPublic;
-		public List<int> Attendees { get { return attendees; } private set { } } 
+		public bool isPublic; 
 
 		private int id;
 		private int hostid;
@@ -297,7 +296,7 @@ namespace JustRunWithIt
 			return events;
 		}
 
-		public bool AddUser(int id){
+		public bool AddAttendee(int id){
 			bool isSuccess = true;
 
 			// Connection
@@ -316,22 +315,38 @@ namespace JustRunWithIt
 				query.ExecuteNonQuery ();
 			} catch (Exception err) {
 				isSuccess = false;
-				Console.WriteLine (err);
+				Console.WriteLine (err.Message);
 			}
 
 			return isSuccess;
 		}
 
-		public void AddAttendee(int attendeeid) {
-			if (!this.attendees.Contains (attendeeid)) {
-				this.attendees.Add (attendeeid);
+		public bool RemoveAttendee(int id) {
+			if (!this.Attendees.Contains (id)) {
+				throw new Exception ("Group does not contain userid.");
 			}
-		}
 
-		public void RemoveAttendee(int attendeeid) {
-			if (this.attendees.Contains (attendeeid)) {
-				this.attendees.Remove (attendeeid);
+			bool isSuccess = true;
+
+			// Connection
+			SqlConnection db = Configuration.getConnection();
+			SqlCommand query = new SqlCommand ();
+			query.CommandText = "DELETE Events_Users WHERE EventID = @EVENTID AND UserID = @USERID";
+			query.Parameters.Add ("@EVENTID", SqlDbType.Int);
+			query.Parameters.Add ("@USERID", SqlDbType.Int);
+			query.Parameters ["@EVENTID"].Value = this.id;
+			query.Parameters ["@USERID"].Value = id;
+
+			try {
+				db.Open();
+
+				query.ExecuteNonQuery();
+			} catch (Exception err) {
+				isSuccess = false;
+				Console.WriteLine (err.Message);
 			}
+
+			return isSuccess;
 		}
 	}
 }
