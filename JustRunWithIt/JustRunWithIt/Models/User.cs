@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Xml;
+using System.Data.SqlClient;
 using System.Data;
 
 namespace JustRunWithIt
@@ -16,13 +16,16 @@ namespace JustRunWithIt
 		private string lastName;
 		private float distance;
 
-		private User() {}
-		public User (string first, string last)
-		{
-			this.firstName = first;
-			this.lastName = last;
+		private User() {
+			id = 0;
+			firstName = "";
+			lastName = "";
+			distance = 0.0f;
 		}
 
+		/**
+		 * Add user and returns an object of it back upon  completion
+		 */
 		public static User AddUser(int id, string first, string last)
 		{
 			// Create Model to return
@@ -51,6 +54,7 @@ namespace JustRunWithIt
 			} catch (Exception err){
 				Console.WriteLine (err.Message);
 			}
+
 			return person;
 		}
 
@@ -74,6 +78,7 @@ namespace JustRunWithIt
 			query.Parameters ["@USERID"].Value = id;
 
 			try{
+				db.Open();
 				SqlDataReader data = query.ExecuteReader ();
 				user.id = data.GetInt32(data.GetOrdinal("UserID"));
 				user.firstName = data.GetString(data.GetOrdinal("FirstName"));
