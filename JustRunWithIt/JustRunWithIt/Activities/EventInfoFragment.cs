@@ -26,10 +26,10 @@ namespace JustRunWithIt
 			// Create your fragment here
 
 			// get userid some-how here!
-			int userid = 0; // do real stuff with intents here
+			int userid = savedInstanceState.GetInt("userid"); // do real stuff with intents here
 			this._user = User.createFromID(userid);
 
-			int eventid = 0; // do real stuff with intents here
+			int eventid = savedInstanceState.GetInt("eventid"); // do real stuff with intents here
 			this._event = Event.getFromEventID(eventid);
 
 			// if (user == creator)
