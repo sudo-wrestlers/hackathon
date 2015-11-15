@@ -13,15 +13,23 @@ using Android.Widget;
 
 namespace JustRunWithIt
 {
-	[Activity (Label = "EventManagerActivity")]			
-	public class EventManagerActivity : Activity
+	[Activity (Label = "EventMainActivity")]			
+	public class EventMainActivity : Activity
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
 
+			// Default to EventManagerFragment
+			FragmentTransaction ft = this.FragmentManager.BeginTransaction ();
+			EventManagerFragment emf = new EventManagerFragment ();
+
+			ft.Add (Resource.Id.linearLayout1, emf);
+
+			ft.Commit ();
+
 			// Create your application here
-			SetContentView(Resource.Layout.event_manager);
+			// SetContentView(Resource.Layout.event_manager);
 		}
 	}
 }
