@@ -28,7 +28,7 @@ namespace JustRunWithIt
 		private string description;
 		private List<int> attendees;
 
-		private Event() {
+		public Event() {
 			id = -1;
 			hostid = -1;
 			HostType = "";
@@ -53,7 +53,7 @@ namespace JustRunWithIt
 
 			SqlConnection db = Configuration.getConnection ();
 
-			if (this.id == -1) {
+			if (this.id != -1) {
 				throw new Exception ("Saving existing event.");
 			}
 
