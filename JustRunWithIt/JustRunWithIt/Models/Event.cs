@@ -14,6 +14,7 @@ namespace JustRunWithIt
 		public string Name { get { return name; } private set { }}
 		public string Description { get { return description; }private set { } }
 		public string HostID { get { return HostID; } private set { } }
+		public string HostType;
 		public Category EvtCategory;
 		public Tuple<float, float> Location;
 		public DateTime StartTime;
@@ -22,12 +23,13 @@ namespace JustRunWithIt
 
 		private int id;
 		private int hostid;
-		private string hosttype;
 		private string name;
 		private string description;
 
 		private Event() {
 			id = -1;
+			hostid = -1;
+			HostType = "";
 			name = "";
 			description = "";
 			isPublic = true;
@@ -73,7 +75,7 @@ namespace JustRunWithIt
 			query.Parameters ["@START"].Value = this.StartTime.ToString (CultureInfo.InvariantCulture.DateTimeFormat);
 			query.Parameters ["@END"].Value = this.EndTime.ToString (CultureInfo.InvariantCulture.DateTimeFormat);
 			query.Parameters ["@HOSTID"].Value = this.hostid;
-			query.Parameters ["@HOSTTYPE"].Value = this.hosttype;
+			query.Parameters ["@HOSTTYPE"].Value = this.HostType;
 			query.Parameters ["@EVENTTYPE"].Value = (int)this.EvtCategory;
 			query.Parameters ["@LONGIT"].Value = this.Location.Item1;
 			query.Parameters ["@LATIT"].Value = this.Location.Item2;
@@ -93,6 +95,11 @@ namespace JustRunWithIt
 
 		public bool SaveEvent(){
 			bool isSuccessful = true;
+
+			// Grab Connection
+			SqlConnection db = Configuration.getConnection();
+
+			// Establish Connection
 			SqlCommand query = new SqlCommand();
 			query.CommandText = "UPDATE Events" +
 				"SET EventName = @NAME," +
@@ -124,10 +131,18 @@ namespace JustRunWithIt
 			query.Parameters ["@START"].Value = this.StartTime.ToString (CultureInfo.InvariantCulture.DateTimeFormat);
 			query.Parameters ["@END"].Value = this.EndTime.ToString (CultureInfo.InvariantCulture.DateTimeFormat);
 			query.Parameters ["@HOSTID"].Value = this.hostid;
-			query.Parameters ["@HOSTTYPE"].Value = this.hosttype;
+			query.Parameters ["@HOSTTYPE"].Value = this.HostType;
 			query.Parameters ["@EVENTTYPE"].Value = (int)this.EvtCategory;
 			query.Parameters ["@LONGIT"].Value = this.Location.Item1;
 			query.Parameters ["@LATIT"].Value = this.Location.Item2;
+
+			try{
+				db.Open();
+				query.ExecuteNonQuery();
+			} catch (Exception err) {
+				Console.WriteLine (err.Message);
+			}
+
 			return isSuccessful;
 		}
 			
