@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	<database>
+		<database_name>JustRunWithIt</database_name>
+		<host>173.194.232.14</host>
+		<username>run-with-it</username>
+		<password>runwithit</password>
+	</database>
+</config>
