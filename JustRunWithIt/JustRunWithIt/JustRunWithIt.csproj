@@ -78,10 +78,6 @@
     <None Include="Views\RazorView.cshtml">
       <Generator>RazorTemplatePreprocessor</Generator>
     </None>
-    <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
-    <None Include="Scripts\jquery-1.9.1.js" />
-    <None Include="Scripts\jquery-1.9.1.min.js" />
-    <None Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="packages.config" />
     <None Include="Content\bootstrap-theme.css" />
     <None Include="Content\bootstrap-theme.css.map" />
@@ -97,6 +93,10 @@
     <None Include="Scripts\bootstrap.js" />
     <None Include="Scripts\bootstrap.min.js" />
     <None Include="config.xml" />
+    <None Include="Scripts\jquery-2.1.4-vsdoc.js" />
+    <None Include="Scripts\jquery-2.1.4.js" />
+    <None Include="Scripts\jquery-2.1.4.min.js" />
+    <None Include="Scripts\jquery-2.1.4.min.map" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
