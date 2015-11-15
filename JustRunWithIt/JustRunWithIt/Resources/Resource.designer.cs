@@ -213,22 +213,19 @@ namespace JustRunWithIt
 			public const int event_manager = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int event_view = 2130903045;
+			public const int Main = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int Main = 2130903046;
+			public const int options = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int options = 2130903047;
+			public const int results = 2130903047;
 			
 			// aapt resource value: 0x7f030008
-			public const int results = 2130903048;
+			public const int test_result = 2130903048;
 			
 			// aapt resource value: 0x7f030009
-			public const int test_result = 2130903049;
-			
-			// aapt resource value: 0x7f03000a
-			public const int test_suite = 2130903050;
+			public const int test_suite = 2130903049;
 			
 			static Layout()
 			{
