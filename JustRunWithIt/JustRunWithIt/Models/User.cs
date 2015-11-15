@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Data.SqlClient;
+// using System.Data.SqlClient;
 
 namespace JustRunWithIt
 {
@@ -23,7 +23,7 @@ namespace JustRunWithIt
 		public static User createFromID(int id){
 			User user = new User ();
 
-			SqlConnection db = new SqlConnection();
+			// SqlConnection db = new SqlConnection();
 
 
 			return user;
