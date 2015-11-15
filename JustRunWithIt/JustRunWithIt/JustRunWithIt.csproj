@@ -49,17 +49,17 @@
     <Reference Include="Xamarin.Auth.Android">
       <HintPath>..\Components\xamarin.auth-1.2.3.1\lib\android\Xamarin.Auth.Android.dll</HintPath>
     </Reference>
-    <Reference Include="ModernHttpClient">
-      <HintPath>..\packages\modernhttpclient.2.1.4\lib\MonoAndroid\ModernHttpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="OkHttp">
-      <HintPath>..\packages\modernhttpclient.2.1.4\lib\MonoAndroid\OkHttp.dll</HintPath>
-    </Reference>
     <Reference Include="ArcGIS.ServiceModel.Android">
       <HintPath>..\packages\ArcGIS.PCL.5.1.0\lib\MonoAndroid10\ArcGIS.ServiceModel.Android.dll</HintPath>
     </Reference>
     <Reference Include="ArcGIS.ServiceModel">
       <HintPath>..\packages\ArcGIS.PCL.5.1.0\lib\MonoAndroid10\ArcGIS.ServiceModel.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\ModernHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="OkHttp">
+      <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\OkHttp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
