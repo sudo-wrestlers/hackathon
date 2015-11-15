@@ -45,13 +45,7 @@ namespace JustRunWithIt
 			newEvent.EvtCategory = category.Text;
 			// 	send to database
 
-<<<<<<< HEAD
 			newEvent.SaveEvent ();
-=======
->>>>>>> 7697d7c7b7fe769696101fa6aec5ac36b18d67aa
-
-			// Send user to EventInfoFragment for new event
-
 
 			//  preserve event id
 
