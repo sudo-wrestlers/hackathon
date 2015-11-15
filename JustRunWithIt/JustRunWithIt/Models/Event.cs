@@ -12,7 +12,7 @@ namespace JustRunWithIt
 	public class Event
 	{
 		public string Name { get { return name; } private set { }}
-		public string HostID { get { return HostID; } private set { } }
+		public int HostID { get { return HostID; } private set { } }
 		public List<int> Attendees { get { return attendees; } private set { } }
 		public string HostType;
 		public Category EvtCategory;
