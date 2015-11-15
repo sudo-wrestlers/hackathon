@@ -63,7 +63,6 @@
     <Compile Include="Activities\EventInfoFragment.cs" />
     <Compile Include="Activities\EventMainActivity.cs" />
     <Compile Include="Activities\EventManagerFragment.cs" />
-    <Compile Include="Activities\EventMgmt.cs" />
     <Compile Include="Activities\EventViewFragment.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +104,7 @@
     <AndroidResource Include="Resources\layout\event_edit.xml" />
     <AndroidResource Include="Resources\layout\event_info.xml" />
     <AndroidResource Include="Resources\layout\event_view.xml" />
+    <AndroidResource Include="Resources\layout\event_main.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\style.css" />

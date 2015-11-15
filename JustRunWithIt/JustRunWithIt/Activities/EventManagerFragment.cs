@@ -37,7 +37,7 @@ namespace JustRunWithIt
 			FragmentTransaction ft = this.FragmentManager.BeginTransaction ();
 			EventEditFragment eef = new EventEditFragment ();
 
-			ft.Replace (Resource.Id.linearLayout1, eef);
+			ft.Replace (Resource.Id.frameLayout1, eef);
 
 			ft.Commit ();
 		}
