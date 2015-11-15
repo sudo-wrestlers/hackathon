@@ -28,11 +28,11 @@ namespace JustRunWithIt
 		private string description;
 		private List<int> attendees;
 
-		public Event() {
+		public Event(string name, string description) {
 			id = -1;
 			hostid = -1;
 			HostType = "";
-			name = "";
+			name = name;
 			description = "";
 			isPublic = true;
 			EvtCategory = Category.NULL;

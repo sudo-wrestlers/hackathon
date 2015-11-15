@@ -16,6 +16,8 @@ namespace JustRunWithIt
 	[Activity (Label = "EventMainActivity")]			
 	public class EventMainActivity : Activity
 	{
+		public User user;
+
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
