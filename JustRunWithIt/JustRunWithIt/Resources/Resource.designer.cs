@@ -26,6 +26,28 @@ namespace JustRunWithIt
 		
 		public static void UpdateIdValues()
 		{
+			global::Xamarin.Android.NUnitLite.Resource.Id.OptionHostName = global::JustRunWithIt.Resource.Id.OptionHostName;
+			global::Xamarin.Android.NUnitLite.Resource.Id.OptionPort = global::JustRunWithIt.Resource.Id.OptionPort;
+			global::Xamarin.Android.NUnitLite.Resource.Id.OptionRemoteServer = global::JustRunWithIt.Resource.Id.OptionRemoteServer;
+			global::Xamarin.Android.NUnitLite.Resource.Id.OptionsButton = global::JustRunWithIt.Resource.Id.OptionsButton;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultFullName = global::JustRunWithIt.Resource.Id.ResultFullName;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultMessage = global::JustRunWithIt.Resource.Id.ResultMessage;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultResultState = global::JustRunWithIt.Resource.Id.ResultResultState;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultRunSingleMethodTest = global::JustRunWithIt.Resource.Id.ResultRunSingleMethodTest;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultStackTrace = global::JustRunWithIt.Resource.Id.ResultStackTrace;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultsFailed = global::JustRunWithIt.Resource.Id.ResultsFailed;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultsId = global::JustRunWithIt.Resource.Id.ResultsId;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultsIgnored = global::JustRunWithIt.Resource.Id.ResultsIgnored;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultsInconclusive = global::JustRunWithIt.Resource.Id.ResultsInconclusive;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultsMessage = global::JustRunWithIt.Resource.Id.ResultsMessage;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultsPassed = global::JustRunWithIt.Resource.Id.ResultsPassed;
+			global::Xamarin.Android.NUnitLite.Resource.Id.ResultsResult = global::JustRunWithIt.Resource.Id.ResultsResult;
+			global::Xamarin.Android.NUnitLite.Resource.Id.RunTestsButton = global::JustRunWithIt.Resource.Id.RunTestsButton;
+			global::Xamarin.Android.NUnitLite.Resource.Id.TestSuiteListView = global::JustRunWithIt.Resource.Id.TestSuiteListView;
+			global::Xamarin.Android.NUnitLite.Resource.Layout.options = global::JustRunWithIt.Resource.Layout.options;
+			global::Xamarin.Android.NUnitLite.Resource.Layout.results = global::JustRunWithIt.Resource.Layout.results;
+			global::Xamarin.Android.NUnitLite.Resource.Layout.test_result = global::JustRunWithIt.Resource.Layout.test_result;
+			global::Xamarin.Android.NUnitLite.Resource.Layout.test_suite = global::JustRunWithIt.Resource.Layout.test_suite;
 		}
 		
 		public partial class Attribute
@@ -59,6 +81,60 @@ namespace JustRunWithIt
 		
 		public partial class Id
 		{
+			
+			// aapt resource value: 0x7f05000f
+			public const int OptionHostName = 2131034127;
+			
+			// aapt resource value: 0x7f050010
+			public const int OptionPort = 2131034128;
+			
+			// aapt resource value: 0x7f05000e
+			public const int OptionRemoteServer = 2131034126;
+			
+			// aapt resource value: 0x7f05001e
+			public const int OptionsButton = 2131034142;
+			
+			// aapt resource value: 0x7f050019
+			public const int ResultFullName = 2131034137;
+			
+			// aapt resource value: 0x7f05001b
+			public const int ResultMessage = 2131034139;
+			
+			// aapt resource value: 0x7f05001a
+			public const int ResultResultState = 2131034138;
+			
+			// aapt resource value: 0x7f050018
+			public const int ResultRunSingleMethodTest = 2131034136;
+			
+			// aapt resource value: 0x7f05001c
+			public const int ResultStackTrace = 2131034140;
+			
+			// aapt resource value: 0x7f050014
+			public const int ResultsFailed = 2131034132;
+			
+			// aapt resource value: 0x7f050011
+			public const int ResultsId = 2131034129;
+			
+			// aapt resource value: 0x7f050015
+			public const int ResultsIgnored = 2131034133;
+			
+			// aapt resource value: 0x7f050016
+			public const int ResultsInconclusive = 2131034134;
+			
+			// aapt resource value: 0x7f050017
+			public const int ResultsMessage = 2131034135;
+			
+			// aapt resource value: 0x7f050013
+			public const int ResultsPassed = 2131034131;
+			
+			// aapt resource value: 0x7f050012
+			public const int ResultsResult = 2131034130;
+			
+			// aapt resource value: 0x7f05001d
+			public const int RunTestsButton = 2131034141;
+			
+			// aapt resource value: 0x7f05001f
+			public const int TestSuiteListView = 2131034143;
 			
 			// aapt resource value: 0x7f050007
 			public const int button1 = 2131034119;
@@ -129,6 +205,18 @@ namespace JustRunWithIt
 			
 			// aapt resource value: 0x7f030004
 			public const int Main = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int options = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int results = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int test_result = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int test_suite = 2130903048;
 			
 			static Layout()
 			{

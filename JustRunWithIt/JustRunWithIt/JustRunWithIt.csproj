@@ -44,6 +44,8 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="Mono.Android" />
     <Reference Include="System.Data" />
+    <Reference Include="Mono.Android.Export" />
+    <Reference Include="Xamarin.Android.NUnitLite" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
