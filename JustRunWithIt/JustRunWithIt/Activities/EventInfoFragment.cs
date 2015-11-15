@@ -51,7 +51,7 @@ namespace JustRunWithIt
 			// display event information
 			this.View.FindViewById<TextView>(Resource.Id.textView2).Text = this._event.Name;
 			this.View.FindViewById<TextView> (Resource.Id.textView4).Text = this._event.Description;
-			this.View.FindViewById<TextView> (Resource.Id.TextView6).Text = this._event.EvtCategory;
+			this.View.FindViewById<TextView> (Resource.Id.textView6).Text = Enum.GetName (typeof(Category), this._event.EvtCategory);
 		}
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

@@ -34,16 +34,17 @@ namespace JustRunWithIt
 
 		[Java.Interop.Export("createCreateEventClickHandler")]
 		public void createCreateEventClickHandler(View v) {
-			// Create New Event
-			Event newEvent = new Event();
 
 			EditText eventTitle = v.FindViewById<EditText> (Resource.Id.editText3);
 			EditText description = v.FindViewById<EditText> (Resource.Id.editText6);
 			EditText category = v.FindViewById<EditText> (Resource.Id.editText5);
+			// Create New Event
+			Event newEvent = new Event(eventTitle.Text, description.Text);
 
-			newEvent.Name = eventTitle.Text;
-			newEvent.Description = description.Text;
-			newEvent.EvtCategory = category.Text;
+
+
+
+			newEvent.EvtCategory = (Category) Enum.Parse (typeof(Category), category.Text);
 			// 	send to database
 
 			newEvent.SaveEvent ();
